@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../sass/components/auth.scss";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RootState } from "../redux/rootReducer";
@@ -16,15 +16,23 @@ const Login: React.FC = () => {
       return state.authNew;
     }
   );
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>("eve.holt@reqres.in");
+  const [password, setPassword] = useState<string>("cityslicka");
   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
     {}
   );
 
+  //   useEffect(() => {
+  //     navigate("/");
+  //   }, [isLoggedIn, navigate]);
+
   useEffect(() => {
-    navigate("/");
-  }, [isLoggedIn, navigate]);
+    if (isLoginInProcess) {
+      navigate("/home");
+    } else {
+      navigate("/login");
+    }
+  }, [isLoginInProcess, navigate]);
 
   useEffect(() => {
     if (error) {
@@ -132,6 +140,13 @@ const Login: React.FC = () => {
               </div>
             </div>
           </div>
+          <div className="d-flex justify-content-center mt-3">
+                    <span className=" heading-noaccount-login mt-1">No Account?</span>
+                    <Link to="/register" className="btn-register-login">
+                      {" "}
+                      Register YourSelf
+                    </Link>
+                  </div>
         </div>
       </section>
     </>

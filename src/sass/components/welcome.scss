@@ -1,4 +1,35 @@
 .bg-body-tertiary {
-    --bs-bg-opacity: 1; 
-    background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important;
+  --bs-bg-opacity: 1;
+  background-color: rgba(
+    var(--bs-tertiary-bg-rgb),
+    var(--bs-bg-opacity)
+  ) !important;
+}
+
+.navbar-brand {
+  font-weight: 500;
+}
+
+.mt-6 {
+  margin-top: 8rem;
+}
+
+.heading-noaccount {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.btn-register {
+  color: rgb(103, 58, 183);
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  font-style: italic;
+  font-weight: bold;
+  text-decoration: underline;
+  &:hover {
+    color: rgba(103, 58, 183, 0.7);
+  }
 }

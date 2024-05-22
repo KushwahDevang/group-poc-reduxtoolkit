@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import "../sass/components/auth.scss";
-import Login from "../auth/Login";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "../sass/components/welcome.scss";
 
 function WelcomePage() {
   const navigate = useNavigate();
@@ -19,11 +20,15 @@ function WelcomePage() {
     navigate("/");
   }, [isLoggedIn, navigate]);
 
+  const handleClick = () => {
+    navigate("/login");
+  };
+
   return (
     <>
       <Navbar key="md" expand="md" className=" md bg-blue mb-3">
         <Container fluid>
-          <Navbar.Brand href="#">Authentication</Navbar.Brand>
+          <Navbar.Brand href="#">DRK</Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar-expand-md" />
           <Navbar.Offcanvas
             id="offcanvasNavbar-expand-md"
@@ -32,7 +37,7 @@ function WelcomePage() {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id="offcanvasNavbarLabel-expand-md">
-                Authentication
+                DRK
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
@@ -66,7 +71,26 @@ function WelcomePage() {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-      <Login />
+      <Container>
+        <Row>
+          <Col className="text-center">
+            <h2 className="text-uppercase  mt-6">Welcome to Landing Page</h2>
+            <button
+              className="btn btn-dark mt-3 d-block mx-auto text-uppercase"
+              onClick={() => handleClick()}
+            >
+              Log In
+            </button>
+            <div className="d-flex justify-content-center mt-3">
+              <span className=" heading-noaccount mt-1">No Account?</span>
+              <Link to="register" className="btn-register">
+                {" "}
+                Register YourSelf
+              </Link>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

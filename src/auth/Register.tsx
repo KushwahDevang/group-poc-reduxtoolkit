@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../redux/auth/registrationSlice";
 import "../sass/components/auth.scss";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RootState } from "../redux/rootReducer";
@@ -13,9 +13,9 @@ const Register: React.FC = () => {
   const { isRegistered, error } = useSelector(
     (state: RootState) => state.registration
   );
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>("eve.holt@reqres.in");
+  const [password, setPassword] = useState<string>("pistol");
+  const [confirmPassword, setConfirmPassword] = useState<string>("pistol");
   const [errors, setErrors] = useState<{
     email?: string;
     password?: string;
@@ -165,6 +165,15 @@ const Register: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="d-flex justify-content-center mt-3">
+            <span className=" heading-noaccount-login mt-1">
+              Already have Account?
+            </span>
+            <Link to="/login" className="btn-register-login">
+              {" "}
+              Login
+            </Link>
           </div>
         </div>
       </section>

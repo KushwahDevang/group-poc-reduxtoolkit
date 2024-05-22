@@ -15,7 +15,7 @@ a:hover {
   padding: 60px 0;
   background: #f4fffe;
   position: relative;
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 100px;
 }
 .myform-area .form-area {
@@ -178,10 +178,30 @@ a:hover {
 }
 
 .btn-outline-success {
-  color: rgba(0,0,0,1) !important ;
+  color: rgba(0, 0, 0, 1) !important ;
   border-color: rgba(103, 58, 183, 0.7) !important;
 }
 
 .btn-outline-success:hover {
   background-color: rgb(103, 58, 183) !important;
+}
+
+.heading-noaccount-login {
+  display: block;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.btn-register-login {
+  color: rgb(103, 58, 183);
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  font-style: italic;
+  font-weight: bold;
+  text-decoration: underline;
+  &:hover {
+    color: rgba(103, 58, 183, 0.7);
+  }
 }
