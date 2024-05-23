@@ -1,12 +1,21 @@
-// ===== Redux toolkit ====
+// authSlicecopy.ts
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+
+interface User {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  avatar: string;
+}
 
 interface AuthState {
   isLoggedIn: boolean;
   token: string | null;
   isLoginInProcess: boolean;
   error: string | null;
+  user: User | null;
 }
 
 const initialState: AuthState = {
@@ -14,19 +23,19 @@ const initialState: AuthState = {
   token: null,
   isLoginInProcess: false,
   error: null,
+  user: null,
 };
 
-// asynchrnous methods
-
+// Asynchronous methods
 export const userLogin = createAsyncThunk("auth/login", async (creds: any) => {
   const response = await axios.post("https://reqres.in/api/login", creds);
-  console.log("response", response);
-  return response.data;
+  const userInfo = await axios.get(`https://reqres.in/api/users/4`);
+  return { token: response.data.token, user: userInfo.data.data };
 });
 
 const authSliceNew = createSlice({
   name: "Auth",
-  initialState: initialState,
+  initialState,
   reducers: {
     checkIsLoggedIn: (state): any => {
       const token = localStorage.getItem("authToken");
@@ -42,17 +51,18 @@ const authSliceNew = createSlice({
       state.token = null;
       state.error = null;
       state.isLoginInProcess = false;
+      state.user = null;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(userLogin.pending, (state, action) => {
+    builder.addCase(userLogin.pending, (state) => {
       state.isLoginInProcess = true;
     });
     builder.addCase(userLogin.fulfilled, (state: AuthState, action: any) => {
       localStorage.setItem("authToken", action.payload.token);
-      console.log(action);
       state.isLoggedIn = true;
       state.token = action.payload.token;
+      state.user = action.payload.user;
       state.isLoginInProcess = false;
     });
     builder.addCase(userLogin.rejected, (state, action) => {
@@ -60,6 +70,7 @@ const authSliceNew = createSlice({
       state.isLoggedIn = false;
       state.token = null;
       state.isLoginInProcess = false;
+      state.user = null;
     });
   },
 });
