@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RootState } from "../redux/rootReducer";
+import { userLogin } from "../redux/auth/AuthSliceCopy";
 
 const Register: React.FC = () => {
   const dispatch = useDispatch<any>();
@@ -13,6 +14,8 @@ const Register: React.FC = () => {
   const { isRegistered, error } = useSelector(
     (state: RootState) => state.registration
   );
+  const { isLoggedIn } = useSelector((state: RootState) => state.authNew);
+
   const [email, setEmail] = useState<string>("eve.holt@reqres.in");
   const [password, setPassword] = useState<string>("pistol");
   const [confirmPassword, setConfirmPassword] = useState<string>("pistol");
@@ -24,9 +27,17 @@ const Register: React.FC = () => {
 
   useEffect(() => {
     if (isRegistered) {
-      navigate("/login");
+      dispatch(userLogin({ email, password }));
+      navigate("/home");
     }
-  }, [isRegistered, navigate]);
+  }, [isRegistered, dispatch, email, password]);
+
+//   useEffect(() => {
+//     if (isLoggedIn) {
+//       navigate("/home");
+//     }
+//       console.log("aaaaaa", isLoggedIn);
+//   }, [isLoggedIn, navigate]);
 
   useEffect(() => {
     if (error) {
@@ -167,12 +178,12 @@ const Register: React.FC = () => {
             </div>
           </div>
           <div className="d-flex justify-content-center mt-3">
-            <span className=" heading-noaccount-login mt-1">
+            <span className="heading-noaccount-login mt-1">
               Already have Account?
             </span>
             <Link to="/login" className="btn-register-login">
               {" "}
-              Login
+              Login{" "}
             </Link>
           </div>
         </div>

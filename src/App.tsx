@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import WelcomePage from "./layout/WelcomePage";
 import NotFound from "./layout/NotFound";
@@ -12,13 +12,10 @@ import { RootState } from "./redux/rootReducer";
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const { isLoggedIn }: any = useSelector((state: RootState) => state.authNew);
-  // const [isUserLoggedIn, setUserLoggedInStatus] = useState(false);
-  console.log("LOgged In App.tsx", isLoggedIn);
 
   useEffect(() => {
     dispatch(checkIsLoggedIn());
-    console.log("isLoggedIn", isLoggedIn);
-  }, [isLoggedIn]);
+  }, [dispatch]);
 
   return (
     <>
