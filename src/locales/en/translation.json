@@ -1,0 +1,43 @@
+{
+  "Welcome to the Home Page": "Welcome to the Home Page",
+  "Welcome to Landing Page": "Welcome to Landing Page",
+  "header": {
+    "home": "Home",
+    "link": "Link",
+    "dropdown": "Dropdown",
+    "action": "Action",
+    "another action": "Another Action",
+    "something else here": "Something else here",
+    "search": "Search"
+  },
+  "home": {
+    "Welcome to the Home Page": "Welcome to the Home Page",
+    "name": "Name",
+    "email": "Email",
+    "Eve Holt": "Eve Holt",
+    "eve.holt@reqres.in": "eve.holt@reqres.in",
+    "logout": "LogOut"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "submit": "Login",
+    "login": "Log In",
+    "register": "Register",
+    "no account": "No Account",
+    "register yourself": "Register YourSelf",
+    "login form": "Login Form",
+    "login form text": "A login form is a user interface component that collects a username and password to authenticate users for accessing a system or application. It typically includes fields for input and a submit button."
+  },
+  "register": {
+    "email": "Email",
+    "enter email": "ingrese correo electrónico",
+    "login": "Login",
+    "password": "Password",
+    "confim password": "Confim Password",
+    "registers form": "Register Form",
+    "already have account": "Already Have Account?",
+    "register": "Register",
+    "register from text": "A registration form is a user interface component that collects user information to create an account."
+  }
+}

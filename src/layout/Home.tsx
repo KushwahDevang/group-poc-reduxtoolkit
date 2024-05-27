@@ -6,9 +6,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { checkIsLoggedIn } from "../redux/auth/AuthSliceCopy";
 import Header from "./Header";
-// import { userLogout } from "../redux/auth/AuthSliceCopy";
+import { useTranslation } from "react-i18next";
 
 const Home: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, isLoggedIn } = useSelector((state: RootState) => state.authNew);
@@ -36,13 +37,16 @@ const Home: React.FC = () => {
         <div className="row justify-content-center">
           <div className="col-lg-8">
             <div className="mt-5">
-              <h1 className="text-center mb-4">Welcome to the Home Page</h1>
+              <h1 className="text-center mb-4">
+                {t("Welcome to the Home Page")}
+              </h1>
               <div className="user-details">
                 <p className="text-center">
-                  <strong>Name:</strong> {user.first_name} {user.last_name}
+                  <strong>{t("home.name")}</strong> {user.first_name}{" "}
+                  {user.last_name}
                 </p>
                 <p className="text-center">
-                  <strong>Email: </strong>
+                  <strong>{t("home.email")}</strong>
                   {user.email}
                 </p>
                 <div className="d-flex justify-content-center">
@@ -57,7 +61,7 @@ const Home: React.FC = () => {
                 className="btn btn-dark mt-4 d-block mx-auto"
                 onClick={handleLogout}
               >
-                Logout
+                {t("home.logout")}
               </button>
             </div>
           </div>

@@ -6,8 +6,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RootState } from "../redux/rootReducer";
 import { userLogin } from "../redux/auth/AuthSliceCopy";
+import { useTranslation } from "react-i18next";
+import Header from "../layout/Header";
 
 const Login: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
   const { isLoggedIn, error, token, isLoginInProcess }: any = useSelector(
@@ -88,6 +91,7 @@ const Login: React.FC = () => {
 
   return (
     <>
+      <Header />
       <ToastContainer />
       <section className="myform-area">
         <div className="container">
@@ -95,16 +99,11 @@ const Login: React.FC = () => {
             <div className="col-lg-8">
               <div className="form-area login-form">
                 <div className="form-content">
-                  <h2>Login</h2>
-                  <p>
-                    A login form is a user interface component that collects a
-                    username and password to authenticate users for accessing a
-                    system or application. It typically includes fields for
-                    input and a submit button.
-                  </p>
+                  <h2> {t("login.login")}</h2>
+                  <p>{t("login.login form text")}</p>
                 </div>
                 <div className="form-input">
-                  <h2>Login Form</h2>
+                  <h2>{t("login.login form")}</h2>
                   <form onSubmit={handleSubmit}>
                     <div className="form-group">
                       <input
@@ -112,9 +111,9 @@ const Login: React.FC = () => {
                         name="email"
                         value={email}
                         onChange={handleEmailChange}
-                        placeholder="Enter email"
+                        placeholder={t("login.email")}
                       />
-                      <label>Email</label>
+                      <label>{t("login.email")}</label>
                       {errors.email && <p className="error">{errors.email}</p>}
                     </div>
                     <div className="form-group">
@@ -123,16 +122,16 @@ const Login: React.FC = () => {
                         name="password"
                         value={password}
                         onChange={handlePasswordChange}
-                        placeholder="Password"
+                        placeholder={t("login.password")}
                       />
-                      <label>Password</label>
+                      <label> {t("login.password")}</label>
                       {errors.password && (
                         <p className="error">{errors.password}</p>
                       )}
                     </div>
                     <div className="myform-button">
                       <button className="myform-btn" type="submit">
-                        Login
+                        {t("login.login")}
                       </button>
                     </div>
                   </form>
@@ -141,12 +140,12 @@ const Login: React.FC = () => {
             </div>
           </div>
           <div className="d-flex justify-content-center mt-3">
-                    <span className=" heading-noaccount-login mt-1">No Account?</span>
-                    <Link to="/register" className="btn-register-login">
-                      {" "}
-                      Register YourSelf
-                    </Link>
-                  </div>
+            <span className=" heading-noaccount-login mt-1">{t("login.no account")}</span>
+            <Link to="/register" className="btn-register-login">
+              {" "}
+              {t("login.register yourself")}
+            </Link>
+          </div>
         </div>
       </section>
     </>

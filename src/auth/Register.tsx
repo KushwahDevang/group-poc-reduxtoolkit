@@ -7,8 +7,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RootState } from "../redux/rootReducer";
 import { userLogin } from "../redux/auth/AuthSliceCopy";
+import Header from "../layout/Header";
+import { useTranslation } from "react-i18next";
 
 const Register: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
   const { isRegistered, error } = useSelector(
@@ -32,12 +35,12 @@ const Register: React.FC = () => {
     }
   }, [isRegistered, dispatch, email, password]);
 
-//   useEffect(() => {
-//     if (isLoggedIn) {
-//       navigate("/home");
-//     }
-//       console.log("aaaaaa", isLoggedIn);
-//   }, [isLoggedIn, navigate]);
+  //   useEffect(() => {
+  //     if (isLoggedIn) {
+  //       navigate("/home");
+  //     }
+  //       console.log("aaaaaa", isLoggedIn);
+  //   }, [isLoggedIn, navigate]);
 
   useEffect(() => {
     if (error) {
@@ -114,6 +117,7 @@ const Register: React.FC = () => {
 
   return (
     <>
+      <Header />
       <ToastContainer />
       <section className="myform-area">
         <div className="container">
@@ -121,14 +125,11 @@ const Register: React.FC = () => {
             <div className="col-lg-8">
               <div className="form-area register-form">
                 <div className="form-content">
-                  <h2>Register</h2>
-                  <p>
-                    A registration form is a user interface component that
-                    collects user information to create an account.
-                  </p>
+                  <h2>{t("register.register")}</h2>
+                  <p>{t("register.register from text")}</p>
                 </div>
                 <div className="form-input">
-                  <h2>Register Form</h2>
+                  <h2>{t("register.registers form")}</h2>
                   <form onSubmit={handleSubmit}>
                     <div className="form-group">
                       <input
@@ -136,9 +137,9 @@ const Register: React.FC = () => {
                         name="email"
                         value={email}
                         onChange={handleEmailChange}
-                        placeholder="Enter email"
+                        placeholder={t("register.enter email")}
                       />
-                      <label>Email</label>
+                      <label>{t("register.email")}</label>
                       {errors.email && <p className="error">{errors.email}</p>}
                     </div>
                     <div className="form-group">
@@ -147,9 +148,9 @@ const Register: React.FC = () => {
                         name="password"
                         value={password}
                         onChange={handlePasswordChange}
-                        placeholder="Password"
+                        placeholder={t("register.password")}
                       />
-                      <label>Password</label>
+                      <label>{t("register.password")}</label>
                       {errors.password && (
                         <p className="error">{errors.password}</p>
                       )}
@@ -160,16 +161,16 @@ const Register: React.FC = () => {
                         name="confirmPassword"
                         value={confirmPassword}
                         onChange={handleConfirmPasswordChange}
-                        placeholder="Confirm Password"
+                        placeholder={t("register.confim password")}
                       />
-                      <label>Confirm Password</label>
+                      <label>{t("register.confim password")}</label>
                       {errors.confirmPassword && (
                         <p className="error">{errors.confirmPassword}</p>
                       )}
                     </div>
                     <div className="myform-button">
                       <button className="myform-btn" type="submit">
-                        Register
+                        {t("register.register")}
                       </button>
                     </div>
                   </form>
@@ -179,11 +180,11 @@ const Register: React.FC = () => {
           </div>
           <div className="d-flex justify-content-center mt-3">
             <span className="heading-noaccount-login mt-1">
-              Already have Account?
+              {t("register.already have account")}
             </span>
             <Link to="/login" className="btn-register-login">
               {" "}
-              Login{" "}
+              {t("register.login")}{" "}
             </Link>
           </div>
         </div>

@@ -1,0 +1,44 @@
+{
+  "Welcome to the Home Page": "Bienvenida a la pagina de inicio",
+  "Welcome to Landing Page": "Bienvenido a la página de destino",
+  "header": {
+    "home": "Hogar",
+    "link": "enlace",
+    "dropdown": "desplegable",
+    "action": "acción",
+    "another action": "otra acción",
+    "something else here": "algo más aquí",
+    "search": "Buscar"
+  },
+  "home": {
+    "Welcome to the Home Page": "Bienvenida a la pagina de inicio",
+    "name": "nombre",
+    "email": "Correo Electrónico :",
+    "Eve Holt": "Eva Holt",
+    "eve.holt@reqres.in": "eve.holt@reqres.in",
+    "logout": "cerrar sesión"
+  },
+  "login": {
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "submit": "Iniciar sesión",
+    "login": "acceso",
+    "register": "registro",
+    "no account": "sin cuenta",
+    "register yourself": "regístrate",
+    "login form": "formulario de",
+    "email is required.": "Correo electronico es requerido.",
+    "login form text": "Un formulario de inicio de sesión es un componente de la interfaz de usuario que recopila un nombre de usuario y una contraseña para autenticar a los usuarios para acceder a un sistema o aplicación. Por lo general, incluye campos de entrada y un botón de envío."
+  },
+  "register": {
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "confim password": "confirmar Contraseña",
+    "registers form": "Formulario de",
+    "enter email": "Enter Email",
+    "login": "acceso",
+    "already have account": "¿Ya tienes cuenta?",
+    "register": "registro",
+    "register from text": "Un formulario de registro es un componente de la interfaz de usuario que recopila información del usuario para crear una cuenta."
+  }
+}
