@@ -1,25 +1,28 @@
+// notfound.scss
+@import "../constants/variables";
+@import "../constants/mixins";
+
 .maincontainer {
   min-height: calc(100vh - 110px);
   background-color: #ffffff;
   padding-bottom: 30px;
+
+  @media (max-width: 576px) {
+    padding-bottom: 0px;
+  }
 }
 
 .middlebody {
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: $border-radius;
   min-height: calc(123vh - 100px);
-}
 
-@media (max-width: 576px) {
-  .maincontainer {
-    padding-bottom: 0px;
-  }
-  .middlebody {
+  @media (max-width: 576px) {
     min-height: calc(100vh - 67px);
   }
 }
 
 .btncolorback {
-  background: rgb(103, 58, 183) !important;
+  background: $primary-color-solid !important;
   color: white !important;
 }

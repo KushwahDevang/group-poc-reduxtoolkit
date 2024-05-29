@@ -1,0 +1,4 @@
+// _functions.scss
+@function rgba($color, $alpha: 1) {
+    @return rgba(red($color), green($color), blue($color), $alpha);
+  }

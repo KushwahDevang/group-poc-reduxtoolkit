@@ -1,0 +1,20 @@
+// _mixins.scss
+@mixin box-shadow {
+  box-shadow: $box-shadow;
+}
+
+@mixin border-radius($radius: $border-radius) {
+  border-radius: $radius;
+}
+
+@mixin transition($time: 0.5s) {
+  transition: all $time;
+}
+
+@mixin form-label-focus {
+  top: 4px;
+  left: 0;
+  font-size: 14px;
+  color: $secondary-color;
+  font-weight: 500;
+}

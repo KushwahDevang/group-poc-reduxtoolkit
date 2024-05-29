@@ -1,0 +1,7 @@
+// main.scss
+@import "./constants/variables";
+@import "./constants/mixins";
+@import "./constants/functions";
+@import "./components/auth.scss";
+@import "./components/notfound.scss";
+@import "./components/welcome.scss";
