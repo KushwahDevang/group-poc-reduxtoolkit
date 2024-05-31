@@ -28,7 +28,7 @@ const initialState: AuthState = {
 
 // Asynchronous methods
 export const userLogin = createAsyncThunk("auth/login", async (creds: any) => {
-  const response = await axios.post("https://reqres.in/api/login", creds);
+  const response = await axios.post("http://localhost:8080/api/user/login", creds);
   const userInfo = await axios.get(`https://reqres.in/api/users/4`);
   return { token: response.data.token, user: userInfo.data.data };
 });

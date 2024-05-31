@@ -20,7 +20,7 @@ const Login: React.FC = () => {
     }
   );
   const [email, setEmail] = useState<string>("eve.holt@reqres.in");
-  const [password, setPassword] = useState<string>("cityslicka");
+  const [password, setPassword] = useState<string>("dev12345");
   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
     {}
   );
