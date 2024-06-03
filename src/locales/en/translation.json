@@ -39,5 +39,26 @@
     "already have account": "Already Have Account?",
     "register": "Register",
     "register from text": "A registration form is a user interface component that collects user information to create an account."
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "description": "Enter your email address below to receive instructions on how to reset your password.",
+    "formTitle": "Forgot Form",
+    "emailPlaceholder": "Please enter email",
+    "email": "Email",
+    "submit": "Submit",
+    "remembered": "Remembered your password?",
+    "login": "Login"
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "description": "Please enter your new password here",
+    "formTitle": "Reset Form",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "New Password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm Password",
+    "submit": "Submit",
+    "passwordMismatch": "Passwords do not match"
   }
 }

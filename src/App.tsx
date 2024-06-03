@@ -8,6 +8,8 @@ import Register from "./auth/Register";
 import { checkIsLoggedIn } from "./redux/auth/AuthSliceCopy";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./redux/rootReducer";
+import ForgotPassword from "./auth/ForgotPassword";
+import ResetPassword from "./auth/ResetPassword";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -25,6 +27,8 @@ const App: React.FC = () => {
             <Route path="/" element={<WelcomePage />} index />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+            <Route path="reset-password/:token" element={<ResetPassword />} />
             <Route path="*" element={<NotFound />} />
           </>
         ) : (

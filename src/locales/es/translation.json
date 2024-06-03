@@ -40,5 +40,26 @@
     "already have account": "¿Ya tienes cuenta?",
     "register": "registro",
     "register from text": "Un formulario de registro es un componente de la interfaz de usuario que recopila información del usuario para crear una cuenta."
+  },
+  "forgotPassword": {
+    "title": "Olvidó su contraseña",
+    "description": "Ingrese su dirección de correo electrónico a continuación para recibir instrucciones sobre cómo restablecer su contraseña.",
+    "formTitle": "Formulario de olvido",
+    "emailPlaceholder": "Por favor, ingrese el correo electrónico",
+    "email": "Correo electrónico",
+    "submit": "Enviar",
+    "remembered": "¿Recordó su contraseña?",
+    "login": "Iniciar sesión"
+  },
+  "resetPassword": {
+    "title": "Restablecer contraseña",
+    "description": "Por favor, ingrese su nueva contraseña aquí",
+    "formTitle": "Formulario de restablecimiento",
+    "newPassword": "Nueva contraseña",
+    "newPasswordPlaceholder": "Nueva contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "confirmPasswordPlaceholder": "Confirmar contraseña",
+    "submit": "Enviar",
+    "passwordMismatch": "Las contraseñas no coinciden"
   }
 }
