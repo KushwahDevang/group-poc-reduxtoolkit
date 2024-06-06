@@ -52,7 +52,7 @@ function Header() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="#action1">{t("header.home")}</Nav.Link>
+                {/* <Nav.Link href="#action1">{t("header.home")}</Nav.Link>
                 <Nav.Link href="#action2">{t("header.link")}</Nav.Link>
                 <NavDropdown
                   title={t("header.dropdown")}
@@ -68,7 +68,7 @@ function Header() {
                   <NavDropdown.Item href="#action5">
                   {t("header.something else here")}
                   </NavDropdown.Item>
-                </NavDropdown>
+                </NavDropdown> */}
               </Nav>
               <Form className="d-flex">
                 <Form.Control

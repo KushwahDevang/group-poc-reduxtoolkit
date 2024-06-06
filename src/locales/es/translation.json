@@ -26,6 +26,7 @@
     "register": "registro",
     "no account": "sin cuenta",
     "register yourself": "regístrate",
+    "forgot password": "olvidé mi contraseña",
     "login form": "formulario de",
     "email is required.": "Correo electronico es requerido.",
     "login form text": "Un formulario de inicio de sesión es un componente de la interfaz de usuario que recopila un nombre de usuario y una contraseña para autenticar a los usuarios para acceder a un sistema o aplicación. Por lo general, incluye campos de entrada y un botón de envío."

@@ -12,10 +12,12 @@ const ForgotPassword: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
-  const { error, message, isForgotPasswordInProcess }: any = useSelector(
+  const { error, message, isForgotPasswordProcess } :any = useSelector(
     (state: RootState) => state.authNew
   );
+
   const [email, setEmail] = useState<string>("");
+  const [errors, setErrors] = useState<{ email?: string }>({});
 
   useEffect(() => {
     if (message) {
@@ -24,18 +26,44 @@ const ForgotPassword: React.FC = () => {
   }, [message]);
 
   useEffect(() => {
+    if (isForgotPasswordProcess) {
+      navigate("/login");
+    }
+  }, [isForgotPasswordProcess, navigate]);
+
+  useEffect(() => {
     if (error) {
       toast.error(error);
     }
   }, [error]);
 
+  const validateEmail = (email: string) => {
+    if (!email) return t("forgotPassword.emailRequired");
+    if (!/\S+@\S+\.\S+/.test(email)) return t("forgotPassword.emailInvalid");
+    return "";
+  };
+
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      email: validateEmail(newEmail),
+    }));
+  };
+
+  const validateForm = () => {
+    const emailError = validateEmail(email);
+    setErrors({ email: emailError });
+    return !emailError;
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(forgotPassword({ email }));
+    if (validateForm()) {
+      dispatch(forgotPassword({ email }));
+    }
+    setEmail("")
   };
 
   return (
@@ -62,8 +90,8 @@ const ForgotPassword: React.FC = () => {
                         onChange={handleEmailChange}
                         placeholder={t("forgotPassword.emailPlaceholder")}
                       />
-
                       <label>{t("forgotPassword.email")}</label>
+                      {errors.email && <p className="error"> {errors.email}</p>}
                     </div>
                     <div className="myform-button">
                       <button className="myform-btn" type="submit">

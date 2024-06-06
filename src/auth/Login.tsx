@@ -134,13 +134,24 @@ const Login: React.FC = () => {
                         {t("login.login")}
                       </button>
                     </div>
+                    <p className="text-center m-0 mt-2">
+                      {" "}
+                      <Link
+                        to="/forgot-password"
+                        className="forgot-password-link"
+                      >
+                        {t("login.forgot password")}
+                      </Link>
+                    </p>
                   </form>
                 </div>
               </div>
             </div>
           </div>
           <div className="d-flex justify-content-center mt-3">
-            <span className=" heading-noaccount-login mt-1">{t("login.no account")}</span>
+            <span className=" heading-noaccount-login mt-1">
+              {t("login.no account")}
+            </span>
             <Link to="/register" className="btn-register-login">
               {" "}
               {t("login.register yourself")}

@@ -59,9 +59,13 @@ export const resetPassword = createAsyncThunk(
   "auth/resetPassword",
   async (data: { token: string; newPassword: string }) => {
     const response = await axios.post(
-      "http://localhost:8080/api/user/reset-password",
+      `http://localhost:8080/api/user/reset-password`,
+
       data
     );
+
+    console.log("Response reset pass", response);
+
     return response.data.message;
   }
 );

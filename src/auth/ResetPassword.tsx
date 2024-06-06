@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RootState } from "../redux/rootReducer";
@@ -12,19 +12,33 @@ const ResetPassword: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
-  const { error, message, isResetPasswordInProcess }: any = useSelector(
+  const { error, message, isResetPasswordProcess }: any = useSelector(
     (state: RootState) => state.authNew
   );
-  const { token } = useParams<{ token: string }>();
+
+  const [searchParams] = useSearchParams();
+  const token: any = searchParams.get("token");
+
+  console.log("Token Mil JA bhau", token);
+
   const [newPassword, setNewPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [errors, setErrors] = useState<{
+    newPassword?: string;
+    confirmPassword?: string;
+  }>({});
 
   useEffect(() => {
     if (message) {
       toast.success(message);
+    }
+  }, [message]);
+
+  useEffect(() => {
+    if (isResetPasswordProcess) {
       navigate("/login");
     }
-  }, [message, navigate]);
+  }, [isResetPasswordProcess, navigate]);
 
   useEffect(() => {
     if (error) {
@@ -32,23 +46,60 @@ const ResetPassword: React.FC = () => {
     }
   }, [error]);
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewPassword(e.target.value);
+  const validateNewPassword = (password: string) => {
+    if (!password) return t("resetPassword.passwordRequired");
+    return "";
+  };
+
+  const validateConfirmPassword = (
+    password: string,
+    confirmPassword: string
+  ) => {
+    if (!confirmPassword) return t("resetPassword.confirmPasswordRequired");
+    if (password !== confirmPassword)
+      return t("resetPassword.passwordMismatch");
+    return "";
+  };
+
+  const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newPassword = e.target.value;
+    setNewPassword(newPassword);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      newPassword: validateNewPassword(newPassword),
+      confirmPassword: validateConfirmPassword(newPassword, confirmPassword),
+    }));
   };
 
   const handleConfirmPasswordChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setConfirmPassword(e.target.value);
+    const newConfirmPassword = e.target.value;
+    setConfirmPassword(newConfirmPassword);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      confirmPassword: validateConfirmPassword(newPassword, newConfirmPassword),
+    }));
+  };
+
+  const validateForm = () => {
+    const newPasswordError = validateNewPassword(newPassword);
+    const confirmPasswordError = validateConfirmPassword(
+      newPassword,
+      confirmPassword
+    );
+    setErrors({
+      newPassword: newPasswordError,
+      confirmPassword: confirmPasswordError,
+    });
+    return !newPasswordError && !confirmPasswordError;
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (newPassword !== confirmPassword) {
-      toast.error(t("resetPassword.passwordMismatch"));
-      return;
+    if (validateForm()) {
+      dispatch(resetPassword({ token, newPassword }));
     }
-    dispatch(resetPassword({ token, newPassword }));
   };
 
   return (
@@ -72,10 +123,13 @@ const ResetPassword: React.FC = () => {
                         type="password"
                         name="newPassword"
                         value={newPassword}
-                        onChange={handlePasswordChange}
+                        onChange={handleNewPasswordChange}
                         placeholder={t("resetPassword.newPasswordPlaceholder")}
                       />
-                      <label>{t("resetPassword.newPassword")}</label>
+                      <label>{t("resetPassword.newPasswordPlaceholder")}</label>
+                      {errors.newPassword && (
+                        <p className="error">{errors.newPassword}</p>
+                      )}
                     </div>
                     <div className="form-group">
                       <input
@@ -87,7 +141,12 @@ const ResetPassword: React.FC = () => {
                           "resetPassword.confirmPasswordPlaceholder"
                         )}
                       />
-                      <label>{t("resetPassword.confirmPassword")}</label>
+                      <label>
+                        {t("resetPassword.confirmPasswordPlaceholder")}
+                      </label>
+                      {errors.confirmPassword && (
+                        <p className="error">{errors.confirmPassword}</p>
+                      )}
                     </div>
                     <div className="myform-button">
                       <button className="myform-btn" type="submit">

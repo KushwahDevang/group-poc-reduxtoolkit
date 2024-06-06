@@ -17,7 +17,7 @@ const Register: React.FC = () => {
   const { isRegistered, error } = useSelector(
     (state: RootState) => state.registration
   );
-  const { isLoggedIn } = useSelector((state: RootState) => state.authNew);
+  // const { isLoggedIn } = useSelector((state: RootState) => state.authNew);
 
   const [email, setEmail] = useState<string>("eve.holt@reqres.in");
   const [password, setPassword] = useState<string>("pistol");
@@ -34,13 +34,6 @@ const Register: React.FC = () => {
       navigate("/home");
     }
   }, [isRegistered, dispatch, email, password]);
-
-  //   useEffect(() => {
-  //     if (isLoggedIn) {
-  //       navigate("/home");
-  //     }
-  //       console.log("aaaaaa", isLoggedIn);
-  //   }, [isLoggedIn, navigate]);
 
   useEffect(() => {
     if (error) {
