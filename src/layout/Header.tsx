@@ -52,8 +52,8 @@ function Header() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                {/* <Nav.Link href="#action1">{t("header.home")}</Nav.Link>
-                <Nav.Link href="#action2">{t("header.link")}</Nav.Link>
+                {/* <Nav.Link href="#action1">{t("header.home")}</Nav.Link> */}
+                {/* <Nav.Link href="#action2">{t("header.link")}</Nav.Link>
                 <NavDropdown
                   title={t("header.dropdown")}
                   id="offcanvasNavbarDropdown-expand-md"

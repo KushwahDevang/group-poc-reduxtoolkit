@@ -8,6 +8,7 @@ import { RootState } from "../redux/rootReducer";
 import { userLogin } from "../redux/auth/AuthSliceCopy";
 import { useTranslation } from "react-i18next";
 import Header from "../layout/Header";
+import GetAllUser from "./GetAllUser";
 
 const Login: React.FC = () => {
   const { t } = useTranslation();
@@ -159,6 +160,7 @@ const Login: React.FC = () => {
           </div>
         </div>
       </section>
+      <GetAllUser />
     </>
   );
 };
